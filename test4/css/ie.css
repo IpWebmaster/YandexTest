@@ -1,0 +1,7 @@
+div#centered {
+    margin-top: expression(((document.documentElement.offsetHeight/2)
+    -parseInt(offsetHeight)/2)  <0 ? "0" :
+    (document.documentElement.offsetHeight/2)
+    -(parseInt(offsetHeight)/2)  +'px') ;
+}
+.text { filter: alpha(opacity=80); }
