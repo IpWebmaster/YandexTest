@@ -13,12 +13,10 @@ function compareForm(form1, form2){
                 if (typeof result["change"][item1.name] != 'object') {
                     result["change"][item1.name] = [];
                 }
-                var obj = {},
-                    obj2 = {};
-                obj[item1.name] = item1.value;
-                obj2[item2.name] = item2.value;
-                result["change"][item1.name].push(obj);
-                result["change"][item1.name].push(obj2);
+                result["change"][item1.name] = {
+                    "Old" : item1.value,
+                    "New" : item2.value
+                };
             }
         }
     }
