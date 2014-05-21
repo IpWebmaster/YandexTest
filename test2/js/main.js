@@ -1,3 +1,9 @@
+function getUrlObject(url) {
+    var a = document.createElement('a');
+    a.href = url;
+    return a;
+}
+
 function serializeParams(obj) {
     var str = [];
     for (var param in obj) {
@@ -15,7 +21,13 @@ function serializeParams(obj) {
 }
 
 function addParamsToUrl(url, params){
-    return url + '?' + params;
+    var urlObject = getUrlObject(url);
+    if(urlObject.search === "") {
+        var p = '?' + params;
+    }else{
+        var p = urlObject.search + "&" + params;
+    }
+    return urlObject.protocol + "//" + urlObject.hostname + urlObject.pathname + p;
 }
 
 var obj = {
@@ -25,4 +37,5 @@ var obj = {
 };
 
 var params = serializeParams(obj);
-var url = addParamsToUrl("http://mysite.ru/test.php", params);
+var url = addParamsToUrl("http://mysite.ru/test.php/?oldparams=45", params);
+console.log(url);
